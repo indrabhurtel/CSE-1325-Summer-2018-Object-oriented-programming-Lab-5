@@ -1,0 +1,19 @@
+CXXFLAGS  +=  -std=c++11
+
+GTKFLAGS  = `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
+
+
+
+ex: money_main.o money.o
+
+	$(CXX) $(CXXFLAGS) -o money money_main.o money.o $(GTKFLAGS)
+
+
+money_main.o: money_main.cpp money.h
+		
+	$(CXX) $(CXXFLAGS) -c money_main.cpp $(GTKFLAGS)
+
+
+money.o: money.h money.cpp
+		
+	$(CXX) $(CXXFLAGS) -c money.cpp $(GTKFLAGS)
